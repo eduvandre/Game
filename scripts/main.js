@@ -15,24 +15,32 @@ atualizarPontos();
 document.getElementById('enemy').addEventListener('click', () => {
     const agora = Date.now();
 
-    if (agora - ultimoClique < 1000) return;
+    if (agora - ultimoClique < 200) return;
 
     ultimoClique = agora;
 
-    if (machado.hasItem === true) {
-        pontos += machado.itemDamage;
-        espada.hasItem = false
+    if (bladeOfChaos.hasItem) {
+        pontos += bladeOfChaos.itemDamage
         atualizarPontos()
         return
-    }
+    } else if (dreamseeker.hasItem) {
+        pontos += dreamseeker.itemDamage
+        atualizarPontos()
+        return
+    } else if (aerondight.hasItem) {
+        pontos += aerondight.itemDamage
+        atualizarPontos()
+        return
+    } else if (orcrist.hasItem) {
+        pontos += orcrist.itemDamage 
+        atualizarPontos()
+        return
+    } else if (!orcrist.hasItem) {
+        pontos++
+        atualizarPontos()
+        return
+    } 
 
-    if (espada.hasItem === true) {
-        pontos += espada.itemDamage;
-    } else {
-        pontos++;
-    }
-
-    atualizarPontos();
 });
 
 // Classe dos itens
@@ -43,47 +51,55 @@ class Item {
         this.itemCost = itemCost;
         this.itemDamage = itemDamage;
         this.hasItem = false;
-        this.canBuy = true
     }
 
     buyItem() {
         if (pontos < this.itemCost) {
             alert('Pontos insuficientes!');
             return;
-        } else if (this.canBuy === false) {
-            alert('você já tem esse item');
-            return;
         }
 
         this.hasItem = true;
-        this.canBuy = false;
         pontos -= this.itemCost;
         atualizarPontos();
+        atualizarLoja();
 
         console.log(`Comprou ${this.itemName}`);
     }
 
     displayItem() {
-        const button = document.createElement('button');
+        itensElement.innerHTML = `<button class="item">Melhorar Arma<br>Nome:${this.itemName}<br>Dano:${this.itemDamage}<br>Custo:${this.itemCost}</button>`
 
-        button.classList.add('itemElement');
-        button.textContent = `${this.itemName} - Custo: ${this.itemCost}`;
-
-        button.addEventListener('click', () => {
-            this.buyItem();
-        });
-
-        itensElement.appendChild(button);
+        document.querySelector('.item').addEventListener('click', () => {
+            this.buyItem()
+        })
     }
-
 }
 
 // Criando itens
-const espada = new Item('Espada', 5, 2);
-espada.displayItem();
 
-const machado = new Item('Machado', 15, 5);
-machado.displayItem();
+const orcrist = new Item('Orcrist',5,2);
+orcrist.displayItem();
+const aerondight = new Item('Aerondight',10,5);
+const dreamseeker = new Item('Dreamseeker',15,10);
+const bladeOfChaos = new Item('Blade of Chaos',20,15)
+
+function atualizarLoja() {
+
+    if (orcrist.hasItem && !aerondight.hasItem) {
+        aerondight.displayItem();
+    }
+
+    if (aerondight.hasItem && !dreamseeker.hasItem) {
+        dreamseeker.displayItem();
+    }
+
+    if (dreamseeker.hasItem && !bladeOfChaos.hasItem) {
+        bladeOfChaos.displayItem()
+    }
+}
+
+
 
 
 

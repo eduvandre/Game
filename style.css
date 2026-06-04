@@ -1,0 +1,44 @@
+@charset "UTF-8";
+
+body {
+    margin: 0;
+}
+
+/* configs do player e enemy */
+
+#containerPersonagens {
+    border: 1px solid black;
+    height: 85vh;
+    display: flex;
+    flex-flow: column-reverse nowrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#player {
+    width: 150px;
+    height: 150px;
+    background-color: green;
+}
+
+#enemy {
+    width: 150px;
+    height: 150px;
+    background-color: red;
+}
+
+/* pontos e itens */
+
+header {
+    display: flex;
+}
+
+.pontos {
+    display: inline-block;
+    width: 130px;
+    padding: 0px 0px 0px 20px;
+    font-size: 1.5em;
+    border: 1px solid black;
+}
+
+

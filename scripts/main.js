@@ -57,12 +57,17 @@ class Item {
         if (pontos < this.itemCost) {
             alert('Pontos insuficientes!');
             return;
-        }
+        } else
 
         this.hasItem = true;
         pontos -= this.itemCost;
         atualizarPontos();
         atualizarLoja();
+
+        if (bladeOfChaos.hasItem) {
+            itensElement.innerHTML = `<button class="item">Não há mais itens</button>`
+            return
+        }
 
         console.log(`Comprou ${this.itemName}`);
     }
@@ -97,6 +102,7 @@ function atualizarLoja() {
     if (dreamseeker.hasItem && !bladeOfChaos.hasItem) {
         bladeOfChaos.displayItem()
     }
+
 }
 
 

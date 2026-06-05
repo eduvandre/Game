@@ -4,47 +4,25 @@ const itensElement = document.querySelector('.js-itens');
 let pontos = 0;
 let ultimoClique = 0;
 
-// Atualiza a interface
+// Vida do inimigo
+let enemyLife = 100;
+const maxEnemyLife = 100;
+
+// Atualiza os pontos
 function atualizarPontos() {
     pontosElement.innerHTML = `<p>Pontos: ${pontos}</p>`;
 }
 
-atualizarPontos();
+// Atualiza a barra de vida
+function atualizarVidaEnemy() {
+    const barra = document.getElementById('enemyLifeBar');
 
-// Sistema de ataque ao inimigo
-document.getElementById('enemy').addEventListener('click', () => {
-    const agora = Date.now();
+    if (!barra) return;
 
-    if (agora - ultimoClique < 200) return;
-
-    ultimoClique = agora;
-
-    if (bladeOfChaos.hasItem) {
-        pontos += bladeOfChaos.itemDamage
-        atualizarPontos()
-        return
-    } else if (dreamseeker.hasItem) {
-        pontos += dreamseeker.itemDamage
-        atualizarPontos()
-        return
-    } else if (aerondight.hasItem) {
-        pontos += aerondight.itemDamage
-        atualizarPontos()
-        return
-    } else if (orcrist.hasItem) {
-        pontos += orcrist.itemDamage 
-        atualizarPontos()
-        return
-    } else if (!orcrist.hasItem) {
-        pontos++
-        atualizarPontos()
-        return
-    } 
-
-});
+    barra.style.width = `${(enemyLife / maxEnemyLife) * 100}%`;
+}
 
 // Classe dos itens
-
 class Item {
     constructor(itemName, itemCost, itemDamage) {
         this.itemName = itemName;
@@ -57,40 +35,50 @@ class Item {
         if (pontos < this.itemCost) {
             alert('Pontos insuficientes!');
             return;
-        } else
+        }
 
         this.hasItem = true;
         pontos -= this.itemCost;
+
         atualizarPontos();
         atualizarLoja();
 
         if (bladeOfChaos.hasItem) {
-            itensElement.innerHTML = `<button class="item">Não há mais itens</button>`
-            return
+            itensElement.innerHTML =
+                `<button class="item">Não há mais itens</button>`;
+            return;
         }
 
         console.log(`Comprou ${this.itemName}`);
     }
 
     displayItem() {
-        itensElement.innerHTML = `<button class="item">Melhorar Arma<br>Nome:${this.itemName}<br>Dano:${this.itemDamage}<br>Custo:${this.itemCost}</button>`
+        itensElement.innerHTML = `
+            <button class="item">
+                Melhorar Arma<br>
+                Nome: ${this.itemName}<br>
+                Dano: ${this.itemDamage}<br>
+                Custo: ${this.itemCost}
+            </button>
+        `;
 
         document.querySelector('.item').addEventListener('click', () => {
-            this.buyItem()
-        })
+            this.buyItem();
+        });
     }
 }
 
 // Criando itens
+const orcrist = new Item('Orcrist', 5, 2);
+const aerondight = new Item('Aerondight', 10, 5);
+const dreamseeker = new Item('Dreamseeker', 15, 10);
+const bladeOfChaos = new Item('Blade of Chaos', 20, 15);
 
-const orcrist = new Item('Orcrist',5,2);
+// Primeiro item da loja
 orcrist.displayItem();
-const aerondight = new Item('Aerondight',10,5);
-const dreamseeker = new Item('Dreamseeker',15,10);
-const bladeOfChaos = new Item('Blade of Chaos',20,15)
 
+// Atualiza a loja
 function atualizarLoja() {
-
     if (orcrist.hasItem && !aerondight.hasItem) {
         aerondight.displayItem();
     }
@@ -100,16 +88,52 @@ function atualizarLoja() {
     }
 
     if (dreamseeker.hasItem && !bladeOfChaos.hasItem) {
-        bladeOfChaos.displayItem()
+        bladeOfChaos.displayItem();
     }
-
 }
 
+// Inicialização
+atualizarPontos();
+atualizarVidaEnemy();
 
+// Sistema de ataque ao inimigo
+document.getElementById('enemy').addEventListener('click', () => {
+    const agora = Date.now();
 
+    if (agora - ultimoClique < 200) return;
 
+    ultimoClique = agora;
 
+    let dano = 1;
 
+    if (bladeOfChaos.hasItem) {
+        dano = bladeOfChaos.itemDamage;
+    } else if (dreamseeker.hasItem) {
+        dano = dreamseeker.itemDamage;
+    } else if (aerondight.hasItem) {
+        dano = aerondight.itemDamage;
+    } else if (orcrist.hasItem) {
+        dano = orcrist.itemDamage;
+    }
 
+    // Dano no inimigo
+    enemyLife -= dano;
 
+    // Ganha pontos
+    pontos += dano;
 
+    // Inimigo derrotado
+    if (enemyLife <= 0) {
+        enemyLife = 0;
+
+        atualizarVidaEnemy();
+
+        alert('Inimigo derrotado!');
+
+        // Respawn
+        enemyLife = maxEnemyLife;
+    }
+
+    atualizarVidaEnemy();
+    atualizarPontos();
+});

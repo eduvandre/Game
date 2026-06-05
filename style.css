@@ -16,15 +16,32 @@ body {
 }
 
 #player {
+    background-image: url(https://cdn.discordapp.com/attachments/763190821301780491/1512238680863936582/amigo_1.png?ex=6a235d85&is=6a220c05&hm=c5a7cb5d74cacf2cbbd129e81453392818e9c5f481a4fe712c9cb4f1ec3a6350&);
     width: 150px;
     height: 150px;
-    background-color: green;
-}
+    background-color: rgb(255, 255, 255);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 
+    border: none;
+    cursor: pointer;
+
+    font-size: 0;
+}
 #enemy {
+    background-image: url("https://cdn.discordapp.com/attachments/763190821301780491/1512222990589362226/inimigo_1.png?ex=6a234ee8&is=6a21fd68&hm=cd3e34f9df00d014f7391420cc26ed989e1bae2cf6cddc1d72a68762295a10c1&");
     width: 150px;
     height: 150px;
-    background-color: red;
+    background-color: rgb(255, 255, 255);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    border: none;
+    cursor: pointer;
+
+    font-size: 0;
 }
 
 /* pontos e itens */
@@ -42,3 +59,16 @@ header {
 }
 
 
+#enemyLifeContainer {
+    width: 200px;
+    height: 20px;
+    border: 1px solid black;
+    background-color: #ccc;
+    margin: 10px auto;
+}
+
+#enemyLifeBar {
+    width: 100%;
+    height: 100%;
+    background-color: rgb(141, 13, 13);
+}

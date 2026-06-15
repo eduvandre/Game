@@ -137,3 +137,35 @@ document.getElementById('enemy').addEventListener('click', () => {
     atualizarVidaEnemy();
     atualizarPontos();
 });
+
+const player = document.getElementById('player');
+// Esquiva direita e  esquerda
+
+document.getElementById('leftBtn').addEventListener('click', () => {
+
+// Esquiva Esquerda
+
+    player.style.backgroundImage = 'url("https://imgs.search.brave.com/HJTVlNC76t7geufwcc7RDA5KL5Kr5jxlCEwFG7PeWYc/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9pLmt5/bS1jZG4uY29tL2Vu/dHJpZXMvaWNvbnMv/ZmFjZWJvb2svMDAw/LzA0OC8yNTEvQ2Fs/bWFfQ2FsYWJyZXNv/LmpwZw")';
+    player.style.transform = "translateX(-50px)";
+
+// Original
+
+    setTimeout(() => {
+        player.style.backgroundImage = 'url("https://cdn.discordapp.com/attachments/763190821301780491/1512238680863936582/amigo_1.png?ex=6a313545&is=6a2fe3c5&hm=1ba1592f1277339dcd5a547bd44a36ee525d75564ccebd648964587308254b0a&")';
+        player.style.transform = "translateX(0)";
+    }, 300);
+});
+
+document.getElementById('rightBtn').addEventListener('click', () => {
+
+// Esquiva Direita
+
+    player.style.backgroundImage = 'url("https://imgs.search.brave.com/HJTVlNC76t7geufwcc7RDA5KL5Kr5jxlCEwFG7PeWYc/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9pLmt5/bS1jZG4uY29tL2Vu/dHJpZXMvaWNvbnMv/ZmFjZWJvb2svMDAw/LzA0OC8yNTEvQ2Fs/bWFfQ2FsYWJyZXNv/LmpwZw")';
+    player.style.transform = "translateX(50px)";
+
+// Original
+    setTimeout(() => {
+        player.style.backgroundImage = 'url("https://cdn.discordapp.com/attachments/763190821301780491/1512238680863936582/amigo_1.png?ex=6a313545&is=6a2fe3c5&hm=1ba1592f1277339dcd5a547bd44a36ee525d75564ccebd648964587308254b0a&")';
+        player.style.transform = "translateX(0)";
+    }, 300);
+});

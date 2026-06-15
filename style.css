@@ -28,6 +28,7 @@ body {
     cursor: pointer;
 
     font-size: 0;
+    transition: transform 0.15s ease;
 }
 #enemy {
     background-image: url("https://cdn.discordapp.com/attachments/763190821301780491/1512222990589362226/inimigo_1.png?ex=6a234ee8&is=6a21fd68&hm=cd3e34f9df00d014f7391420cc26ed989e1bae2cf6cddc1d72a68762295a10c1&");
@@ -72,3 +73,35 @@ header {
     height: 100%;
     background-color: rgb(141, 13, 13);
 }
+
+#playerContainer {
+    display: flex;
+    align-items: center;
+    gap: 55px;
+    margin-bottom: 20px;
+}
+
+/* Seta esquerda */
+#leftBtn {
+    width: 60px;
+    height: 60px;
+    background-image: url("https://imgs.search.brave.com/kGIkLSCeRtF9Mpo_kM0fS4CGe7PxDetfhxwlTEIWP7k/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9tZWRp/YTEudGVub3IuY29t/L20vTTRUNl9LSF9H/V01BQUFBZC9jYWxt/YS1jYWxhYnJlc28t/Y2FsbWEtY2FsbWEt/Y2FsYWJyZXNvLmdp/Zg.jpeg");
+    background-size: cover;
+    background-position: center;
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
+}
+
+/* Seta direita */
+#rightBtn {
+    width: 60px;
+    height: 60px;
+    background-image: url("https://imgs.search.brave.com/kGIkLSCeRtF9Mpo_kM0fS4CGe7PxDetfhxwlTEIWP7k/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9tZWRp/YTEudGVub3IuY29t/L20vTTRUNl9LSF9H/V01BQUFBZC9jYWxt/YS1jYWxhYnJlc28t/Y2FsbWEtY2FsbWEt/Y2FsYWJyZXNvLmdp/Zg.jpeg");
+    background-size: cover;
+    background-position: center;
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
+}
+

@@ -2,11 +2,11 @@ const GOAL_SCORE = 500;
 
 // Inimigos: HP bem mais alto para exigir muito mais cliques até a meta de 500.
 const ENEMIES = [
-  { name: 'GOBLIN VERMELHO', img: IMG_ENEMY1, hp: 260 },
-  { name: 'TIKI GUERREIRO',  img: IMG_ENEMY2, hp: 340 },
-  { name: 'GOBLIN VERMELHO+',img: IMG_ENEMY1, hp: 430 },
-  { name: 'TIKI ANCIÃO',     img: IMG_ENEMY2, hp: 540 },
-  { name: 'GOBLIN REI',      img: IMG_ENEMY1, hp: 680 },
+  { name: 'GOBLIN VERMELHO', img: IMG_ENEMY1, hp: 260, penalty: 10 },
+  { name: 'TIKI GUERREIRO',  img: IMG_ENEMY2, hp: 340, penalty: 15 },
+  { name: 'GOBLIN VERMELHO+',img: IMG_ENEMY1, hp: 430, penalty: 20 },
+  { name: 'TIKI ANCIÃO',     img: IMG_ENEMY2, hp: 540, penalty: 25 },
+  { name: 'GOBLIN REI',      img: IMG_ENEMY1, hp: 680, penalty: 30 },
 ];
 
 // Upgrades: dano inicial bem baixo (1) para tornar o caminho até 500 mais longo.

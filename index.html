@@ -1,25 +1,97 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jogo Pika</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Click Hero</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <div class="js-pontos pontos"></div>
-        <div class="js-itens"></div> 
-    </header>
 
-    <div id="containerPersonagens">
-        <button id="player">Player</button>
-      <div id="enemyLifeContainer">
-    <div id="enemyLifeBar"></div>
-</div>  
-        <button id="enemy">Enemy</button>
+<div id="bg">
+  <div class="stars"></div>
+  <div class="cloud"></div>
+  <div class="cloud c2"></div>
+  <div class="moon"></div>
+  <div class="mountains"></div>
+  <div class="castle">
+    <div class="tower-left"></div>
+    <div class="tower-main"></div>
+    <div class="tower-right"></div>
+    <div class="window w1"></div>
+    <div class="window w2"></div>
+    <div class="window w3"></div>
+  </div>
+  <div class="fog f1"></div>
+  <div class="fog f2"></div>
+</div>
+<div class="torch-glow left"></div>
+<div class="torch-glow right"></div>
+
+<div id="game">
+  <div id="bag-panel">
+    <div id="bag-title">⚔ ARSENAL</div>
+    <div id="upgrades-list"></div>
+  </div>
+
+  <div id="main">
+    <div id="hud">
+      <div id="score-block">
+        <div id="score-display">★ 0</div>
+        <div id="goal-display">META: 500 ★</div>
+      </div>
+      <div id="enemy-info">
+        <div id="enemy-name-display">GOBLIN VERMELHO</div>
+        <div id="enemy-life-bar-container">
+          <div id="enemy-life-bar"></div>
+        </div>
+      </div>
     </div>
 
-    <script type="module" src="scripts/main.js"></script>
+    <div id="arena">
+      <div id="victory-flash"></div>
+      <div id="attack-warning">⚠ ESQUIVA! ⚠</div>
+
+      <div class="pillar left"></div>
+      <div class="pillar right"></div>
+
+      <div id="enemy-zone">
+        <img id="enemy-sprite" src="" alt="Inimigo">
+      </div>
+
+      <div id="dodge-prompt">
+        <div class="dodge-key">◄ A</div>
+        <div class="dodge-key">D ►</div>
+      </div>
+
+      <div id="player-zone">
+        <img id="player-sprite" src="" alt="Player">
+      </div>
+
+      <div class="candle" id="c1"></div>
+      <div class="candle" id="c2"></div>
+      <div id="ground"></div>
+      <div id="controls-hint">[ CLIQUE no inimigo ] [ A / D para esquivar ]</div>
+    </div>
+  </div>
+</div>
+
+<button id="m-left">◄ A</button>
+<button id="m-right">D ►</button>
+
+<div id="victory-screen">
+  <div class="glow-frame">
+    <div id="victory-title">★ VITÓRIA! ★</div>
+    <div id="victory-sub">Você alcançou a meta de 500 pontos e provou seu valor nas terras sombrias. Deseja continuar lutando para aumentar sua pontuação, ou encerrar sua jornada aqui?</div>
+    <div id="victory-score"></div>
+    <div class="victory-buttons">
+      <button id="continue-btn">⚔ CONTINUAR</button>
+      <button id="stop-btn">🏁 ENCERRAR</button>
+    </div>
+  </div>
+</div>
+
+<script src="sprites.js"></script>
+<script src="game.js"></script>
 </body>
 </html>
